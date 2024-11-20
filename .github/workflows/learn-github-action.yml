@@ -1,5 +1,5 @@
 name: Variable-env
-on: workflow_dispatch
+on: push
 
 env:
   NAME: Luigi
