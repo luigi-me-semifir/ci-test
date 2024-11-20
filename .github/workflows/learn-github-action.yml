@@ -2,7 +2,7 @@ name: Variable-env-secret-if
 on: push
 
 env:
-  NAME: Luigi
+  NAME: Mario
 
 jobs:
   say_hello:
@@ -11,7 +11,7 @@ jobs:
       ECOLE: ForEach
     steps:
       - name: "Dis bonjour!"
-        if: ${{ env.NAME != 'Alex' }}
+        if: ${{ env.NAME != 'Luigi' }}
         run: echo "Salut, tu n'es pas Luigi"
       - name: "Bonjour Luigi"
         if: ${{ env.NAME == 'Luigi' }}
