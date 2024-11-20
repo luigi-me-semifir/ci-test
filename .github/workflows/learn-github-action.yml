@@ -1,8 +1,5 @@
-name: Variable-env
+name: Variable-env-secret
 on: push
-
-env:
-  NAME: Luigi
 
 jobs:
   say_hello:
@@ -11,7 +8,7 @@ jobs:
       ECOLE: ForEach
     steps:
       - name: "Dit bonjour"
-        run: echo "Salut $NAME ! Je suis formateur pour $ECOLE. On est  $DAY"
+        run: echo "Salut ${{ secrets.NAME }} ! Je suis formateur pour $ECOLE. On est  $DAY"
         env:
           DAY: Mercredi
       - name: "Mercredi ?"
@@ -20,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Aurevoir"
-        run: echo "Au revoir $NAME de $ECOLE, bon $DAY"
+        run: echo "Au revoir ${{ secrets.NAME }} de $ECOLE, bon $DAY"
