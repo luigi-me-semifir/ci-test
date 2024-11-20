@@ -1,5 +1,8 @@
-name: Variable-env-secret
+name: Variable-env-secret-if
 on: push
+
+env:
+  NAME: Luigi
 
 jobs:
   say_hello:
@@ -7,14 +10,9 @@ jobs:
     env:
       ECOLE: ForEach
     steps:
-      - name: "Dit bonjour"
-        run: echo "Salut ${{ secrets.NAME }} ! Je suis formateur pour $ECOLE. On est  $DAY"
-        env:
-          DAY: Mercredi
-      - name: "Mercredi ?"
-        run: echo "Somme nous $DAY ?"
-  say_goodbay:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Aurevoir"
-        run: echo "Au revoir ${{ secrets.NAME }} de $ECOLE, bon $DAY"
+      - name: "Dis bonjour!"
+        if: ${{ env.NAME != 'Luigi'}}
+        run: echo "Salut, tu n'es pas Luigi"
+      - name: "Bonjour Luigi"
+        if: ${{ env.NAME == 'Luigi' }}
+        run: echo "Salut $NAME"
