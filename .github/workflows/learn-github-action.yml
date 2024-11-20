@@ -1,0 +1,18 @@
+name: Variable-env-secret-if
+on: push
+
+env:
+  NAME: Mario
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    env:
+      ECOLE: ForEach
+    steps:
+      - name: "Dis bonjour!"
+        if: ${{ env.NAME != 'Luigi' }}
+        run: echo "Salut, tu n'es pas Luigi"
+      - name: "Bonjour Luigi"
+        if: ${{ env.NAME == 'Luigi' }}
+        run: echo "Salut $NAME"
