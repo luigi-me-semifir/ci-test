@@ -11,7 +11,7 @@ jobs:
       ECOLE: ForEach
     steps:
       - name: "Dis bonjour!"
-        if: ${{ env.NAME != 'Luigi'}}
+        if: ${{ env.NAME != 'Luigi' }}
         run: echo "Salut, tu n'es pas Luigi"
       - name: "Bonjour Luigi"
         if: ${{ env.NAME == 'Luigi' }}
